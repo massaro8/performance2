@@ -4,4 +4,6 @@
     <string name="username">username</string>
     <string name="password">password</string>
     <string name="log_in">log_in</string>
+    <string name="registrati">registrati</string>
+
 </resources>
