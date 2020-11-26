@@ -10,5 +10,8 @@
     <string name="registrazione">REGISTRAZIONE</string>
     <string name="nome">nome</string>
     <string name="todo">TODO</string>
+    <string name="search">Search</string>
+    <string name="help">help</string>
+    <string name="logout">logout</string>
 
 </resources>

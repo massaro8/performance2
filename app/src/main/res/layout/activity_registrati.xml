@@ -56,7 +56,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:maxLength="20" />
+            android:padding="20dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/white"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -78,31 +81,12 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:maxLength="20" />
+            android:padding="20dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/white"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/username"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="253dp"
-        android:layout_height="55dp"
-        android:hint="@string/username"
-        android:textColorHint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Email"
-        app:layout_constraintVertical_bias="0.06999999"
-        app:startIconDrawable="@drawable/ic_baseline_account_circle_24"
-        app:startIconTint="@color/white">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:maxLength="20" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/password"
@@ -111,11 +95,13 @@
         android:layout_height="55dp"
         android:hint="@string/password"
         android:textColorHint="@color/white"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username"
+        app:layout_constraintTop_toBottomOf="@+id/Email"
         app:layout_constraintVertical_bias="0.07999998"
         app:startIconDrawable="@drawable/ic_baseline_lock_24"
         app:startIconTint="@color/white">
@@ -124,7 +110,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:maxLength="20" />
+            android:padding="20dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
