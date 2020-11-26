@@ -5,5 +5,10 @@
     <string name="password">password</string>
     <string name="log_in">log_in</string>
     <string name="registrati">registrati</string>
+    <string name="PERFORMANCE">PERFORMANCE</string>
+    <string name="email">email</string>
+    <string name="registrazione">REGISTRAZIONE</string>
+    <string name="nome">nome</string>
+    <string name="todo">TODO</string>
 
 </resources>
