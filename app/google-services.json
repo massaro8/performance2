@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "275273352869",
+    "firebase_url": "https://performance2-73d1a.firebaseio.com",
+    "project_id": "performance2-73d1a",
+    "storage_bucket": "performance2-73d1a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:275273352869:android:4770bf465accfcfb2baf4c",
+        "android_client_info": {
+          "package_name": "com.example.performance2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "275273352869-9ctqf2to83ri79ebaraaf8m05m3j8p1e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDo3QYn2NSpGSGGwctRKNicTYVJyV93uEs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "275273352869-9ctqf2to83ri79ebaraaf8m05m3j8p1e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
