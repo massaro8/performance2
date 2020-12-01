@@ -9,5 +9,8 @@
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="always" />
     <item android:title="@string/help" />
-    <item android:title="@string/logout" />
+    <item android:id="@+id/logout"
+        android:title="@string/logout"
+        android:onClick="log_out"
+        />
 </menu>
