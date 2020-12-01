@@ -122,7 +122,6 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/acqua"
         android:text="@string/registrati"
-        android:onClick="confermaRegistrati"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
