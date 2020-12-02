@@ -14,5 +14,11 @@
     <string name="help">help</string>
     <string name="logout">logout</string>
     <string name="erroreCampObbligatorio">erroreCampObbligatorio</string>
+    <string name="storage">storage</string>
+    <string name="openDrawer">Navigation Drawer Open</string>
+    <string name="closeDrawer">Navigation Drawer Close</string>
+    <string name="myfiles">myfiles</string>
+    <string name="app">app</string>
+    <string name="setting">setting</string>
 
 </resources>
