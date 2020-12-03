@@ -20,5 +20,13 @@
     <string name="myfiles">myfiles</string>
     <string name="app">app</string>
     <string name="setting">setting</string>
+    <string name="home">Home</string>
+    <string name="note">Note</string>
+    <string name="news">News</string>
+    <string name="to_do">To do</string>
+    <string name="upload">Upload</string>
+    <string name="calendario">Calendario</string>
+    <string name="profilo">Profilo</string>
+    <string name="impostazioni">Impostazioni</string>
 
 </resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="@drawable/gradiante"
+    android:gravity="bottom"
+    android:id="@+id/nav_header_layout"
+    android:padding="20dp">
+
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="65dp"
+        android:src="@drawable/ic_baseline_person_24" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Utente"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
+
+</LinearLayout>
