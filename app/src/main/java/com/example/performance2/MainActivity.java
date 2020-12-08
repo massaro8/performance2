@@ -57,8 +57,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     }
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -76,6 +74,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         finish();
 
     }
+
+
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuitem) {
