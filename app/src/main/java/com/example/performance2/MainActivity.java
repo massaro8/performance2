@@ -1,7 +1,10 @@
 package com.example.performance2;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,11 +19,17 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.loader.content.AsyncTaskLoader;
 
+import com.example.performance2.database.NotesDatabase;
+import com.example.performance2.entities.Note;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.List;
 
+
+@SuppressWarnings("ALL")
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     public static final int REQUEST_CODE_ADD_NOTE=1;
     Toolbar toolbar;
@@ -59,6 +68,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.add(R.id.container_fragment,new MainFragment());
         fragmentTransaction.commit();
 
+        //databse note
+        getNotes();
+
 
 
 
@@ -73,16 +85,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     }
+    private void getNotes(){
+        //noinspection deprecation
+        @SuppressWarnings("deprecation")
+        @SuppressLint("StaticFieldLeak")
+        class GetNotesTask extends AsyncTask<Void, Void,List<Note>> {
 
+
+            @Override
+            protected List<Note> doInBackground(Void... voids) {
+                return NotesDatabase.getDatabase(getApplicationContext()).noteDao().getAllNotes();
+
+            }
+
+            @Override
+            protected void onPostExecute(List<Note> notes){
+                super.onPostExecute(notes);
+                Log.d("MY_NOTES",notes.toString());
+            }
+        }
+        new GetNotesTask().execute();
+    }
     public void log_out(MenuItem item) {
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(getApplicationContext(),Login.class));
         finish();
 
     }
-
-
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuitem) {
@@ -133,6 +162,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
        
         return false;
     }
+
 
 
 

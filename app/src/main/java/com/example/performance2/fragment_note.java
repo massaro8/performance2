@@ -11,12 +11,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class fragment_note extends Fragment{
+public class fragment_note extends Fragment {
 
   public static final int REQUEST_CODE_ADD_NOTE =1;
 
 
-   @Nullable
+
+    @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
        View view = inflater.inflate(R.layout.nav_note,container,false);
@@ -25,7 +26,7 @@ public class fragment_note extends Fragment{
            @Override
            public void onClick(View v) {
                startActivityForResult(
-                       new Intent(getActivity(),CreateNoteActivity.class),
+                       new Intent(getActivity(), CreateNoteActivity.class),
                        REQUEST_CODE_ADD_NOTE
                );
            }
@@ -36,8 +37,14 @@ public class fragment_note extends Fragment{
 
 
 
-
-
-
+    
 
 }
+
+
+
+
+
+
+
+
