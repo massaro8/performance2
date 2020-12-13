@@ -12,10 +12,8 @@ import com.example.performance2.entities.Note;
 
 @Database(entities = Note.class,version = 1,exportSchema = false)
 public abstract class NotesDatabase extends RoomDatabase {
-
     private static NotesDatabase notesDatabase;
-
-    public static synchronized NotesDatabase getDatabase(Context context){
+    public static synchronized NotesDatabase getDatabase(final Context context){
         if (notesDatabase== null) {
             notesDatabase = Room.databaseBuilder(
                     context,
@@ -27,3 +25,5 @@ public abstract class NotesDatabase extends RoomDatabase {
     }
     public abstract NoteDao noteDao();
 }
+
+

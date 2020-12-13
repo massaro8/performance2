@@ -1,32 +1,21 @@
 package com.example.performance2;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.loader.content.AsyncTaskLoader;
 
-import com.example.performance2.database.NotesDatabase;
-import com.example.performance2.entities.Note;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.List;
 
 
 @SuppressWarnings("ALL")
@@ -38,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FragmentManager fragmentManager;
    FragmentTransaction fragmentTransaction;
    ActionBarDrawerToggle actionBarDrawerToggle;
+
 
 
 
@@ -69,7 +59,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.commit();
 
         //databse note
-        getNotes();
+
+
+
 
 
 
@@ -85,27 +77,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     }
-    private void getNotes(){
-        //noinspection deprecation
-        @SuppressWarnings("deprecation")
-        @SuppressLint("StaticFieldLeak")
-        class GetNotesTask extends AsyncTask<Void, Void,List<Note>> {
 
-
-            @Override
-            protected List<Note> doInBackground(Void... voids) {
-                return NotesDatabase.getDatabase(getApplicationContext()).noteDao().getAllNotes();
-
-            }
-
-            @Override
-            protected void onPostExecute(List<Note> notes){
-                super.onPostExecute(notes);
-                Log.d("MY_NOTES",notes.toString());
-            }
-        }
-        new GetNotesTask().execute();
-    }
     public void log_out(MenuItem item) {
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(getApplicationContext(),Login.class));
@@ -123,12 +95,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.commit();
 
 
+
         }
         if (menuitem.getItemId() == R.id.note){
             fragmentManager=getSupportFragmentManager();
             fragmentTransaction=fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.container_fragment,new fragment_note ());
+            fragment_note fragment1 = new fragment_note();
+            fragmentTransaction.replace(R.id.container_fragment, fragment1);
             fragmentTransaction.commit();
+
 
         }
         if (menuitem.getItemId() == R.id.news){
@@ -162,8 +137,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
        
         return false;
     }
-
-
 
 
 }

@@ -1,11 +1,6 @@
 package com.example.performance2;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.content.AsyncTaskLoader;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.performance2.R;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.performance2.database.NotesDatabase;
 import com.example.performance2.entities.Note;
 
@@ -86,6 +82,7 @@ public class CreateNoteActivity extends AppCompatActivity {
                finish();
            }
        }
+
        new SaveNoteTask().execute();
    }
 
