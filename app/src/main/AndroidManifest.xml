@@ -15,9 +15,21 @@
         android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:targetApi="n">
-        <activity android:name=".CreateNoteActivity"
+        <activity
+            android:name=".EditNote"
+            android:label="@string/title_activity_edit_note"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
+            android:name=".AddNewTask"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+        <activity
+            android:name=".CreateNoteActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".NotesDetails"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
 
         <uses-library
             android:name="org.apache.http.legacy"
@@ -34,8 +46,8 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
     </application>
 
 </manifest>

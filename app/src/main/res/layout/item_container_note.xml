@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layoutNote"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -18,7 +19,7 @@
         android:textColor="@color/white"
         android:textSize="@dimen/_13ssp"/>
     <TextView
-        android:id="@+id/textSuntitle"
+        android:id="@+id/textSubtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_8sdp"
@@ -27,13 +28,25 @@
         android:layout_marginBottom="@dimen/_4sdp"
         android:textColor="@color/colorNoteSubtitleText"
         android:textSize="@dimen/_12ssp"/>
+
     <TextView
-        android:id="@+id/textDateTime"
+        android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_8sdp"
-        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_50sdp"
         android:layout_marginBottom="@dimen/_8sdp"
         android:textColor="@color/colorNoteSubtitleText"
         android:textSize="@dimen/_7ssp"/>
+
+    <ImageView
+        android:id="@+id/menuIcon"
+        android:layout_width="@dimen/_minus10sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_100sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        app:srcCompat="@drawable/ic_baseline_more_vert_24" />
+
+
 </LinearLayout>

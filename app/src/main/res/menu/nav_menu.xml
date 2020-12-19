@@ -29,6 +29,9 @@
         <item android:title="@string/calendario"
             android:id="@+id/calendario"
             android:icon="@drawable/ic_baseline_calendar_today_24"/>
+        <item android:title="Tabella"
+            android:id="@+id/tabella"
+            android:icon="@drawable/ic_baseline_table_chart_24"/>
 
 
 
