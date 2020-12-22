@@ -6,18 +6,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="181dp"
-        android:layout_marginTop="325dp"
-        android:layout_marginEnd="172dp"
-        android:layout_marginBottom="387dp"
-        android:text="ciao"
-        android:textColor="@color/white"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="12dp"
+        android:text="L'applicazione PERFORMANCE è stata studiata e sviluppata, per rendere più efficiente la propria organizzazione personale.
+                                                                             L'applicazione situa tutte le sue funzionalità nel menù a tendina laterale, dividendole per sezioni:
+
+                                                          1)HOME = La sezione home consente di ritornare nella schermata principale, in qualunque momento.
+
+                                                                                      2)NOTE =La sezione note consente di poter prendere appunti, modificarli ed eliminarli, anche con la possibilità di poter aggiungere immagini, in modo tale da tenere sempre monitorati le vostre note
+
+                                                                                     3)NEWS = La sezione inerente all news consente di ricevere costanti aggiornamenti riguardo le ultime notizie e aggiornamenti nel mondo
+
+                                                                                                   4)TO DO = La sezione permetterà di poter realizzare una lista delle cose da fare, relativa agli impegni personali e/o prviati. Ogni qualvolta si porti a termine un'azione sarà possibile spuntare, attraverso checkbox l'attività completata.
+
+                                                                   5)UPLOAD = Nella sezione upload, sarà possibile caricare i propri file personali su database, in modo tale da poter avere sempre a disposizione qualsiasi tipo di file
+
+                                                                                  6)CALENDARIO = In questa sezione troviamo il calendario, questo consentirà di tenere monitorati attriverso i giorni della settimana i propri impegni.
+
+                                                                                                    7)TABELLA =In quest'ultima sezione troviamo unna tabella che ci permetterà di inserire e tener conto passo passo di ogni attività completata"
+        android:textColor="#f5cc10"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.549" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

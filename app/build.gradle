@@ -18,6 +18,7 @@ android {
     }
 
     buildTypes {
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -38,9 +39,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:20.0.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.android.support:support-annotations:28.0.0'
-    implementation 'com.google.firebase:firebase-firestore:22.0.0'
+    implementation 'com.google.firebase:firebase-firestore:22.0.1'
     implementation "com.firebaseui:firebase-ui-auth:3.0.0"
-
+    implementation 'com.google.firebase:firebase-database:19.6.0'
+    implementation'com.google.firebase:firebase-storage:19.2.1'
+    implementation platform('com.google.firebase:firebase-bom:26.2.0')
     implementation"com.google.firebase:firebase-core:18.0.0"
     implementation"com.firebaseui:firebase-ui-firestore:4.1.0"
 
@@ -48,8 +51,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     // for database
-    implementation"androidx.room:room-runtime:2.2.5"
-    annotationProcessor"androidx.room:room-compiler:2.2.5"
+    implementation"androidx.room:room-runtime:2.2.6"
+    annotationProcessor"androidx.room:room-compiler:2.2.6"
 
     //recyclerView
     implementation "androidx.recyclerview:recyclerview:1.1.0"
@@ -61,7 +64,31 @@ dependencies {
     //Rounded imageview
     implementation"com.makeramen:roundedimageview:2.3.0"
 
-    //cardview
+
+
+//Image
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+
+//Network
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
+    implementation "com.squareup.okhttp3:okhttp:3.11.0"
+    implementation "com.squareup.retrofit2:converter-jackson:2.3.0"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    implementation 'com.github.jasminb:jsonapi-converter:0.9'
+
+
+//Times Formater
+    implementation 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
+    //ddd
+    implementation 'com.google.android.gms:play-services-basement:17.5.0'
+    //picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //dexter
+    implementation 'com.karumi:dexter:6.2.1'
 
 
 }

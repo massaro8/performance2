@@ -40,6 +40,15 @@
     <string name="title_activity_edit_note">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="autore">Autore</string>
+
+    <string name="_01_gennaio_1990">01 Gennaio 1990</string>
+    <string name="titolo">Titolo</string>
+    <string name="descrizione">Descrizione</string>
+    <string name="fonte">Fonte</string>
+    <string name="ora">Ora</string>
+    <string name="top_headlines">Top HeadLines</string>
+    <string name="file_title">File Title</string>
 
 
 </resources>

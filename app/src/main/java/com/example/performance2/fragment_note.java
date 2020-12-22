@@ -151,10 +151,12 @@ public class fragment_note extends Fragment {
 
         //imageview
          ImageView imageAddNoteMain = view.findViewById(R.id.imageAddNoteMain);
-        imageAddNoteMain.setOnClickListener(v -> startActivityForResult(
-                new Intent(getActivity(), CreateNoteActivity.class),
-                REQUEST_CODE_ADD_NOTE
-        ));
+        imageAddNoteMain.setOnClickListener(v -> {
+            startActivityForResult(
+                    new Intent(getActivity(), CreateNoteActivity.class),
+                    REQUEST_CODE_ADD_NOTE
+            );
+        });
         //recyclerView
 
         notesRecyclerView = view.findViewById(R.id.notesRecyclerView);
