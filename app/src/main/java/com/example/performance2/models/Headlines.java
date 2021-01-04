@@ -12,11 +12,11 @@ public class Headlines {
 
     @SerializedName("totalResult")
     @Expose
-    private int totalResult;
+    private String totalResults;
 
     @SerializedName("articles")
     @Expose
-    private List<Article> article;
+    private List<Article> articles;
 
     public String getStatus() {
         return status;
@@ -26,19 +26,19 @@ public class Headlines {
         this.status = status;
     }
 
-    public int getTotalResult() {
-        return totalResult;
+    public String getTotalResults() {
+        return totalResults;
     }
 
-    public void setTotalResult(int totalResult) {
-        this.totalResult = totalResult;
+    public void setTotalResults(String totalResults) {
+        this.totalResults = totalResults;
     }
 
-    public List<Article> getArticle() {
-        return article;
+    public List<Article> getArticles() {
+        return articles;
     }
 
-    public void setArticle(List<Article> article) {
-        this.article = article;
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
 }

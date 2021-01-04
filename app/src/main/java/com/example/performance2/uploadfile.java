@@ -6,11 +6,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,8 +29,8 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
 @SuppressWarnings("ALL")
-public class uploadfile extends AppCompatActivity {
-
+public class uploadfile extends AppCompatActivity
+{
     ImageView imagebrowse,imageupload,filelogo,cancelfile;
     Uri filepath;
 
@@ -40,69 +40,79 @@ public class uploadfile extends AppCompatActivity {
     DatabaseReference databaseReference;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.upload_file);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+          storageReference= FirebaseStorage.getInstance().getReference();
+          databaseReference= FirebaseDatabase.getInstance().getReference("mydocuments");
+
+          filetitle=findViewById(R.id.filetitle);
+
+          imagebrowse=findViewById(R.id.imagebrowse);
+          imageupload=findViewById(R.id.imageupload);
+
+          filelogo=findViewById(R.id.filelogo);
+          cancelfile=findViewById(R.id.cancelfile);
 
 
-        storageReference = FirebaseStorage.getInstance().getReference();
-        databaseReference = FirebaseDatabase.getInstance().getReference("mydocuments");
+              filelogo.setVisibility(View.INVISIBLE);
+              cancelfile.setVisibility(View.INVISIBLE);
 
-        filetitle = findViewById(R.id.filetitle);
+              cancelfile.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View view) {
+                      filelogo.setVisibility(View.INVISIBLE);
+                      cancelfile.setVisibility(View.INVISIBLE);
+                      imagebrowse.setVisibility(View.VISIBLE);
+                  }
+              });
 
-        imagebrowse=findViewById(R.id.imagebrowse);
-        imageupload=findViewById(R.id.imageupload);
 
-        filelogo=findViewById(R.id.filelogo);
-        cancelfile=findViewById(R.id.cancelfile);
-        filelogo.setVisibility(View.INVISIBLE);
-        cancelfile.setVisibility(View.INVISIBLE);
+             imagebrowse.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View view) {
+                     Dexter.withContext(getApplicationContext())
+                             .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+                             .withListener(new PermissionListener() {
+                                 @Override
+                                 public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                                     Intent intent=new Intent();
+                                     intent.setType("application/pdf");
+                                     intent.setAction(Intent.ACTION_GET_CONTENT);
+                                     startActivityForResult(Intent.createChooser(intent,"Select Pdf Files"),101);
+                                 }
 
-        cancelfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                filelogo.setVisibility(View.INVISIBLE);
-                cancelfile.setVisibility(View.INVISIBLE);
-                imagebrowse.setVisibility(View.INVISIBLE);
-            }
-        });
+                                 @Override
+                                 public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
 
-        imagebrowse.setOnClickListener(v -> Dexter.withContext(getApplicationContext())
-                .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                .withListener(new PermissionListener() {
-                    @Override
-                    public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                        Intent intent = new Intent();
-                        intent.setType("application/pdf");
-                        intent.setAction(Intent.ACTION_GET_CONTENT);
-                        startActivityForResult(Intent.createChooser(intent,"Select PDF files"),101);
-                    }
+                                 }
 
-                    @Override
-                    public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+                                 @Override
+                                 public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                                   permissionToken.continuePermissionRequest();
+                                 }
+                             }).check();
+                 }
+             });
 
-                    }
-
-                    @Override
-                    public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
-                        permissionToken.continuePermissionRequest();
-                    }
-                }).check());
-
-        imageupload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                processupload(filepath);
-            }
-        });
+             imageupload.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View view) {
+                    processupload(filepath);
+                 }
+             });
     }
-
 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==101&&resultCode==RESULT_OK){
+
+        if(requestCode==101 && resultCode==RESULT_OK)
+        {
             filepath=data.getData();
             filelogo.setVisibility(View.VISIBLE);
             cancelfile.setVisibility(View.VISIBLE);
@@ -110,45 +120,46 @@ public class uploadfile extends AppCompatActivity {
         }
     }
 
-    public void processupload(Uri filepath){
-        final ProgressDialog pd = new ProgressDialog(this);
+
+    public void processupload(Uri filepath)
+    {
+       final ProgressDialog pd=new ProgressDialog(this);
         pd.setTitle("File Uploading....!!!");
         pd.show();
 
-        StorageReference reference = storageReference.child("uploads/"+System.currentTimeMillis()+"pdf");
+        final StorageReference reference=storageReference.child("uploads/"+System.currentTimeMillis()+".pdf");
         reference.putFile(filepath)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
 
-                                fileinfomodel obj = new fileinfomodel(filetitle.getText().toString(),uri.toString());
+                          reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                              @Override
+                              public void onSuccess(Uri uri) {
 
-                                databaseReference.child(databaseReference.push().getKey()).setValue(filetitle.toString(),uri.toString());
+                                model obj=new model(filetitle.getText().toString(),uri.toString(),0,0,0);
+                                databaseReference.child(databaseReference.push().getKey()).setValue(obj);
 
-                                pd.dismiss();
-                                Toast.makeText(getApplicationContext(),"File Uploaded",Toast.LENGTH_LONG).show();
+                                  pd.dismiss();
+                                  Toast.makeText(getApplicationContext(),"File Uploaded",Toast.LENGTH_LONG).show();
 
-                                filelogo.setVisibility(View.INVISIBLE);
-                                cancelfile.setVisibility(View.INVISIBLE);
-                                imagebrowse.setVisibility(View.VISIBLE);
-                                filetitle.setText("");
-
-                            }
-                        });
+                                  filelogo.setVisibility(View.INVISIBLE);
+                                  cancelfile.setVisibility(View.INVISIBLE);
+                                  imagebrowse.setVisibility(View.VISIBLE);
+                                  filetitle.setText("");
+                              }
+                          });
 
                     }
                 })
                 .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                     @Override
-                    public void onProgress(@NonNull UploadTask.TaskSnapshot tasksnapshot) {
-
-                       float percent=(100*tasksnapshot.getBytesTransferred())/tasksnapshot.getTotalByteCount();
-                       pd.setMessage("Uploaded:"+(int)percent+"%");
-
+                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                      float percent=(100*taskSnapshot.getBytesTransferred())/taskSnapshot.getTotalByteCount();
+                      pd.setMessage("Uploaded :"+(int)percent+"%");
                     }
                 });
+
+
     }
 }

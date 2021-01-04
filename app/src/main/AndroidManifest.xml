@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
         android:usesCleartextTraffic="true"
-        tools:targetApi="n">
+        tools:targetApi="n"
+        android:hardwareAccelerated="true">
         <activity
             android:name=".EditNote"
             android:label="@string/title_activity_edit_note"
@@ -28,11 +29,14 @@
             android:name=".MainActivity_img"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name=".MainActivity_news"
+            android:name=".MainActivityNews2"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name=".uploadfile"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+            android:name=".MainActivity_news" />
+        <activity
+            android:name=".uploadfile" />
+        <activity
+            android:name=".viewpdf" />
         <activity
             android:name=".CreateNoteActivity"
             android:screenOrientation="portrait"

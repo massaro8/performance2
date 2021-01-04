@@ -11,6 +11,7 @@ import com.example.performance2.R;
 
 import java.util.List;
 
+@SuppressWarnings("ALL")
 public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
     private List<String> Texts;
     private List<Boolean> checkeds;
