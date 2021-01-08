@@ -24,25 +24,34 @@ import java.util.List;
 
 public class fragment_todolist extends Fragment {
 
+
+    public fragment_todolist(){
+
+    }
+
     public static final int REQUEST_CODE_ADD_TASK = 1;
 
-    List<ToDoModel> taskList;
+
     RecyclerView tasksReciclerView;
     FirebaseFirestore fstore;
     FirestoreRecyclerAdapter<ToDoModel, fragment_todolist.TaskViewHolder> tasksAdapter;
 
 
+
+
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.nav_to_do_list, container, false);
+         //liste
+        List<String> titles = new ArrayList<>();
 
 
-        taskList = new ArrayList<>();
 
         //firebase
         fstore = FirebaseFirestore.getInstance();
 
-        Query query = fstore.collection("tasks").orderBy("Task", Query.Direction.DESCENDING);
+        Query query = fstore.collection("tasks").orderBy("titles", Query.Direction.DESCENDING);
 
         FirestoreRecyclerOptions<ToDoModel> allTask = new FirestoreRecyclerOptions.Builder<ToDoModel>()
                 .setQuery(query, ToDoModel.class)
@@ -54,12 +63,14 @@ public class fragment_todolist extends Fragment {
 
             @Override
             protected void onBindViewHolder(@NonNull TaskViewHolder taskViewHolder, int i, @NonNull ToDoModel toDoModel) {
-                taskViewHolder.checkBox.setText(toDoModel.getTask());
+                taskViewHolder.task.setText(toDoModel.getTitles());
+                String docId = tasksAdapter.getSnapshots().getSnapshot(i).getId();
 
 
 
 
             }
+
 
             @NonNull
             @Override
@@ -73,6 +84,7 @@ public class fragment_todolist extends Fragment {
 
 
         };
+
         //imageview
         FloatingActionButton fabTask = view.findViewById(R.id.floatingactionbutton);
                 fabTask.setOnClickListener((View v) -> {
@@ -81,21 +93,35 @@ public class fragment_todolist extends Fragment {
                             REQUEST_CODE_ADD_TASK
                     );
                 });
+
                 //reciclerview
          tasksReciclerView = view.findViewById(R.id.taskReciclerView);
          tasksReciclerView.setLayoutManager(new LinearLayoutManager(getContext()));
          tasksReciclerView.setAdapter(tasksAdapter);
 
+
         return view;
     }
-    public class TaskViewHolder extends RecyclerView.ViewHolder{
-        CheckBox checkBox;
-        View view;
+    public  class TaskViewHolder extends RecyclerView.ViewHolder{
+        CheckBox task;
+
 
         public TaskViewHolder(@NonNull View itemView) {
             super(itemView);
-           checkBox = itemView.findViewById(R.id.todocheckbox);
-            view = itemView;
+           task = itemView.findViewById(R.id.todocheckbox);
+
+        }
+    }
+    @Override
+    public void onStart(){
+        super.onStart();
+        tasksAdapter.startListening();
+    }
+    @Override
+    public void onStop(){
+        super.onStop();
+        if (tasksAdapter !=null){
+            tasksAdapter.startListening();
         }
     }
 }

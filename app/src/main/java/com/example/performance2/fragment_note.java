@@ -76,7 +76,7 @@ public class fragment_note extends Fragment {
 
              @Override
              protected void onBindViewHolder(@NonNull NotesViewHolder notesViewHolder, int i, @NonNull Note note) {
-                 notesViewHolder.noteTitle.setText(note.getSubTitle());
+                 notesViewHolder.noteTitle.setText(note.getTitle());
                  notesViewHolder.noteSubtitle.setText(note.getSubTitle());
                  notesViewHolder.noteContent.setText(note.getContent());
                  String docId = noteAdapter.getSnapshots().getSnapshot(i).getId();

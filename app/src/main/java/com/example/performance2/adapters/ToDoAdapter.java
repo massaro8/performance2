@@ -8,43 +8,55 @@ import android.widget.CheckBox;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.performance2.R;
+import com.example.performance2.fragment_todolist;
 
 import java.util.List;
 
 @SuppressWarnings("ALL")
 public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
-    private List<String> Texts;
-    private List<Boolean> checkeds;
+
+    List<String> titles;
+    fragment_todolist activity;
 
 
-    public ToDoAdapter(List<String> Text,List<Boolean> checked){
-        this.Texts=Text;this.checkeds=checked;
+    public ToDoAdapter(List<String> titles) {
+        this.titles = titles;
     }
 
-    public ViewHolder onCreateViewHolder(ViewGroup parent,int viewType){
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.tasklayout,parent,false);
         return new ViewHolder(view);
 
     }
     public void onBindViewHolder(ViewHolder holder,int position){
-        holder.task.setText(Texts.get(position));
+        holder.task.setText(titles.get(position));
 
 
 
     }
     public int getItemCount(){
-        return Texts.size();
+        return titles.size();
+    }
+    public fragment_todolist getContext() {
+        return activity;
+    }
+    @Override
+    public int getItemViewType(int position){
+        return position;
     }
     private boolean toBoolean(int n){
         return n!=0;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+
+    static class ViewHolder extends RecyclerView.ViewHolder{
         CheckBox task;
+
 
         ViewHolder(View view){
             super(view);
             task = view.findViewById(R.id.todocheckbox);
+
         }
     }
 

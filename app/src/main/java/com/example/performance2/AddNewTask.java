@@ -61,7 +61,7 @@ public class AddNewTask extends AppCompatActivity {
         //save task firebase
         DocumentReference docref = fstore.collection("tasks").document();
         Map<String, Object> tasks = new HashMap<>();
-        tasks.put("Task", Text);
+        tasks.put("titles", Text);
 
 
 
