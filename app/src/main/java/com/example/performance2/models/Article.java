@@ -22,6 +22,10 @@ public class Article {
     @Expose
     private String description;
 
+    @SerializedName("url")
+    @Expose
+    private String url;
+
     @SerializedName("urlToImage")
     @Expose
     private String urlToImage;
@@ -76,5 +80,13 @@ public class Article {
 
     public void setPublishedAt(String publishedAt) {
         this.publishedAt = publishedAt;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
